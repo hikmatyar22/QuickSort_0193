@@ -34,5 +34,9 @@ void swap(int x, int y)
 	arr[x] = arr[y];
 	arr[y] = temp;
 	nov_count++;
+}
+
+void q_short(int low, int high)
+{
 
 }
