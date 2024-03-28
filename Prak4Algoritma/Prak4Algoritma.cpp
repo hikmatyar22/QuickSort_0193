@@ -1,9 +1,10 @@
 #include <iostream>
 using namespace std;
 
+//Array of integers to hold values
 int arr[20];
-int cmp_count = 0;
-int mov_count = 0;
+int cmp_count = 0; // number of comparasion
+int mov_count = 0; // number of data movements
 int n;
 
 void input() {
@@ -28,6 +29,7 @@ void input() {
 	}
 }
 
+//swaps the element at index x with the element at index y
 void swap(int x, int y)
 {
 	int temp = arr[x];
@@ -40,37 +42,43 @@ void q_short(int low, int high)
 {
 	int temp;
 	int pivot, i, j;
-	if (low > high) {
+	if (low > high) {   //step 1
 		return;
 	}
-	pivot = arr[low];
-	i = low + 1;
-	j = high;
+	pivot = arr[low];  //step 2
+	i = low + 1;       //step 3
+	j = high;          //step 4
 
-	while (i <= j)
+	while (i <= j) //step 10
 	{
-		while ((arr[i] <= pivot) && (i <= high))
+		//search for an element greater than pivot
+		while ((arr[i] <= pivot) && (i <= high))  //step 5
 		{
-			i++;
-			cmp_count++;
-		}
-		while ((arr[j] > pivot) && (j > low))
-		{
-			j--;
+			i++; //step 6
 			cmp_count++;
 		}
 		cmp_count++;
-		if (i < j)
+		//search for an element less than or equal to pivot
+		while ((arr[j] > pivot) && (j > low))
 		{
+			j--; //step 8
+			cmp_count++;
+		}
+		cmp_count++;
+		if (i < j)  //step 9
+		{
+			//swap the element at index i whit the element at index j
 			swap(i, j);
 		}
 	}
-	if (low < j) {
+	if (low < j) {  //step 11
+		//swap the pivot element  whit the element at index j
 		swap(low, j);
 	}
-
-	q_short(low, j - 1);
-	q_short(j + 1, high);
+	//recursive call to sort the left sub array
+	q_short(low, j - 1); //step 12
+	//recursive call to sort the right sub array
+	q_short(j + 1, high); //step 13
 
 }
 
