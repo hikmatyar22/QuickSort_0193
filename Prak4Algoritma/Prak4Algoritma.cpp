@@ -3,7 +3,7 @@ using namespace std;
 
 int arr[20];
 int cmp_count = 0;
-int nov_count = 0;
+int mov_count = 0;
 int n;
 
 void input() {
@@ -33,7 +33,7 @@ void swap(int x, int y)
 	int temp = arr[x];
 	arr[x] = arr[y];
 	arr[y] = temp;
-	nov_count++;
+	mov_count++;
 }
 
 void q_short(int low, int high)
@@ -72,6 +72,20 @@ void q_short(int low, int high)
 	q_short(low, j - 1);
 	q_short(j + 1, high);
 
+}
+
+void display() {
+	cout << "\n---------------" << endl;
+	cout << "Sorted Array" << endl;
+	cout << "-----------------" << endl;
+
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << " ";
+	}
+
+	cout << "\n\nNumber of conparasions : " << cmp_count << endl;
+	cout << "Number of Data Movements : " << mov_count << endl;
 }
 
 
